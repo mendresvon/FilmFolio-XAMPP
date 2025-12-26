@@ -43,7 +43,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         <nav>
             <a href="index.php">Home</a>
             <?php if(isset($_SESSION['user_id'])): ?>
-                <a href="my_watchlist.php">My Watchlist</a>
+                <a href="my_watchlists.php">My Watchlists</a>
                 <a href="logout.php">Logout (<?= htmlspecialchars($_SESSION['username']) ?>)</a>
             <?php else: ?>
                 <a href="login.php">Login</a>
