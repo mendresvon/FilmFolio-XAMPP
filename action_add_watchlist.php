@@ -1,31 +1,42 @@
 <?php
 // action_add_watchlist.php
 session_start();
-require_once 'functions.php'; // Includes dbtools and API logic
+require_once 'functions.php';
 
-// 1. Check if user is logged in
+// 1. Check Login
 if (!isset($_SESSION['user_id'])) {
-    die("Error: You must be logged in to add to watchlist.");
+    die("Error: You must be logged in.");
 }
 
-// 2. Check if Form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id'])) {
+// 2. Check Form Data
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id']) && isset($_POST['watchlist_id'])) {
     
     $user_id = $_SESSION['user_id'];
     $tmdb_id = intval($_POST['tmdb_id']);
+    $watchlist_id = intval($_POST['watchlist_id']);
 
-    // 3. LAZY LOAD: Ensure movie exists in local DB first!
-    // This is the critical "Hybrid" step.
+    // 3. SECURITY: Verify that this watchlist actually belongs to the user
+    // (Prevents users from hacking the form to add movies to someone else's list)
+    $check_sql = "SELECT watchlist_id FROM watchlists WHERE watchlist_id = ? AND user_id = ?";
+    $check_stmt = mysqli_prepare($link, $check_sql);
+    mysqli_stmt_bind_param($check_stmt, "ii", $watchlist_id, $user_id);
+    mysqli_stmt_execute($check_stmt);
+    mysqli_stmt_store_result($check_stmt);
+
+    if (mysqli_stmt_num_rows($check_stmt) == 0) {
+        die("Error: Access Denied. You do not own this list.");
+    }
+
+    // 4. LAZY LOAD: Ensure movie is in local DB
     if (ensureMovieInLocalDB($tmdb_id)) {
         
-        // 4. Add to Watchlist Table
-        // We use INSERT IGNORE to prevent crashing if it's already added (due to our UNIQUE constraint)
-        $sql = "INSERT IGNORE INTO watchlist (user_id, movie_tmdb_id) VALUES (?, ?)";
+        // 5. Add to Watchlist Items
+        $sql = "INSERT IGNORE INTO watchlist_items (watchlist_id, movie_tmdb_id) VALUES (?, ?)";
         $stmt = mysqli_prepare($link, $sql);
-        mysqli_stmt_bind_param($stmt, "ii", $user_id, $tmdb_id);
+        mysqli_stmt_bind_param($stmt, "ii", $watchlist_id, $tmdb_id);
         
         if (mysqli_stmt_execute($stmt)) {
-            // Success: Redirect back to the movie page
+            // Success
             header("Location: details.php?id=" . $tmdb_id . "&added=1");
             exit();
         } else {
@@ -37,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id'])) {
     }
 
 } else {
-    // If accessed directly without POST
     header("Location: index.php");
     exit();
 }

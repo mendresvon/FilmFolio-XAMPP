@@ -339,3 +339,225 @@ nav a:hover {
   margin-bottom: 15px;
   border-radius: 5px;
 }
+
+/* --- MODERN DETAILS PAGE --- */
+
+/* Full-screen blurred background container */
+.details-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.3); /* Blur and darken */
+  transform: scale(1.1); /* Scale up to hide blurred edges */
+}
+
+/* Main content container */
+.details-container {
+  max-width: 1100px;
+  margin: 100px auto 40px; /* Spacing from top */
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Glassmorphic card for movie details */
+.details-hero-card {
+  display: flex;
+  gap: 40px;
+  background: rgba(30, 30, 30, 0.85); /* Semi-transparent dark background */
+  backdrop-filter: blur(15px); /* Glass effect */
+  -webkit-backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+}
+
+/* Poster styling */
+.details-hero-card img {
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Details content styling */
+.details-content {
+  flex: 1;
+  color: var(--text-white);
+}
+
+.details-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 15px;
+  color: var(--text-white);
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.details-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.meta-item i {
+  margin-right: 8px;
+  color: var(--netflix-red);
+}
+
+.details-overview-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-white);
+}
+
+.details-overview-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+/* Watchlist form styling */
+.watchlist-form-modern {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 50px; /* Pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.watchlist-label-modern {
+  font-weight: 600;
+  margin-right: 10px;
+  color: var(--text-white);
+}
+
+.watchlist-select-modern {
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.btn-save-modern {
+  padding: 10px 25px;
+  background-color: var(--netflix-red);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-save-modern:hover {
+  background-color: var(--netflix-red-hover);
+  transform: translateY(-2px);
+}
+
+/* Reviews Section Title */
+.reviews-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Review Form Styling */
+.review-form-card {
+  background: #1f1f1f;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-form-card h4 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+/* Modern Inputs for Review Form */
+.modern-select,
+.modern-textarea {
+  width: 100%;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modern-select:focus,
+.modern-textarea:focus {
+  border-color: var(--netflix-red);
+}
+
+/* Review Item Card */
+.review-card-modern {
+  background: #1f1f1f;
+  padding: 20px 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-header-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.reviewer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--netflix-red); /* Red username */
+}
+
+.review-stars {
+  color: gold;
+  font-size: 1.1rem;
+}
+
+.review-text-modern {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.review-date {
+  color: #888;
+  font-size: 0.85rem;
+}
