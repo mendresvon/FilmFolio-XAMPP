@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Libraries - FilmFolio</title>
+    <title>My Watchlists - FilmFolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Specific Styles for List Cards */
@@ -97,7 +97,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <a href="index.php" class="logo">FilmFolio</a>
         <nav>
             <a href="index.php">Home</a>
-            <a href="my_watchlists.php" style="color: #e50914;">My Libraries</a>
+            <a href="my_watchlists.php" style="color: #e50914;">My Watchlists</a>
             <a href="logout.php">Logout</a>
         </nav>
     </header>
@@ -105,7 +105,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <div class="container">
         
         <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h1>My Libraries</h1>
+            <h1>My Watchlists</h1>
         </div>
 
         <div class="create-box">
