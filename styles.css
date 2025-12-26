@@ -1,0 +1,338 @@
+/* styles.css - FIXED: App Layout & Search Bar */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap");
+
+:root {
+  --netflix-red: #e50914;
+  --netflix-red-hover: #f40612;
+  --dark-bg: #141414;
+  --text-white: #fff;
+  --text-gray: #b3b3b3;
+  --glass-bg: rgba(0, 0, 0, 0.75);
+  --input-bg: #333;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-white);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Global Navbar --- */
+header {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9) 10%,
+    rgba(0, 0, 0, 0)
+  ); /* Darker gradient for readability */
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute; /* Floats over everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 100; /* Ensure it stays on top */
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--netflix-red);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+nav a {
+  color: var(--text-white);
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.2s;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+nav a:hover {
+  color: var(--text-gray);
+}
+
+/* --- LANDING PAGE STYLES --- */
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background: url("images/background.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.95) 100%);
+  z-index: 1;
+}
+
+.landing-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 60px 50px;
+  border-radius: 15px;
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.landing-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(229, 9, 20, 0.4);
+  border-color: rgba(229, 9, 20, 0.5);
+}
+
+.main-title {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -2px;
+  color: var(--netflix-red);
+  line-height: 1.1;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.author-subtitle {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 20px auto 30px;
+  width: 60%;
+}
+
+.headline-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: white;
+}
+.sub-headline {
+  font-size: 1.25rem;
+  color: #cccccc;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.btn-login-main {
+  background-color: var(--netflix-red);
+  color: white;
+  padding: 15px 60px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.btn-login-main:hover {
+  background-color: var(--netflix-red-hover);
+  transform: translateY(-2px);
+}
+
+.signup-link-text {
+  margin-top: 20px;
+  color: #b3b3b3;
+  font-size: 1rem;
+}
+.signup-link-text a {
+  color: white;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.signup-link-text a:hover {
+  color: var(--netflix-red);
+}
+
+/* --- AUTH PAGES --- */
+.auth-body {
+  background: url("images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.glass-container {
+  /* ... reused ... */
+}
+.glass-input {
+  background: #333;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  height: 50px;
+  padding: 0 20px;
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.glass-input:focus {
+  background: #454545;
+  outline: none;
+  border-bottom: 2px solid var(--netflix-red);
+}
+.glass-btn {
+  background-color: var(--netflix-red);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding: 16px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.auth-switch-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+.auth-switch-link:hover {
+  color: var(--netflix-red);
+  text-decoration: underline;
+}
+
+/* --- APP LAYOUT (FIXED) --- */
+
+/* 1. Main Container: Pushed down by 120px to clear the absolute Header */
+.container {
+  max-width: 1200px;
+  margin: 120px auto 40px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. Restored Search Bar Styles */
+.search-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.search-container input {
+  padding: 15px 20px;
+  width: 300px;
+  border-radius: 4px 0 0 4px;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-container button {
+  padding: 15px 25px;
+  background-color: var(--netflix-red);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.search-container button:hover {
+  background-color: var(--netflix-red-hover);
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+.movie-card {
+  background: #181818;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.movie-card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.movie-info {
+  padding: 10px;
+}
+.movie-title {
+  font-size: 1rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Details Page */
+.hero {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.hero img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.btn-action {
+  padding: 10px 20px;
+  background-color: var(--netflix-red);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+.review-box {
+  background: #1f1f1f;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
