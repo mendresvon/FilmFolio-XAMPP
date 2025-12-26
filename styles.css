@@ -1,4 +1,4 @@
-/* styles.css - FIXED: App Layout & Search Bar */
+/* styles.css - Final Fixed Version */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap");
 
 :root {
@@ -23,21 +23,17 @@ body {
 
 /* --- Global Navbar --- */
 header {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.9) 10%,
-    rgba(0, 0, 0, 0)
-  ); /* Darker gradient for readability */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0));
   padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute; /* Floats over everything */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   box-sizing: border-box;
-  z-index: 100; /* Ensure it stays on top */
+  z-index: 100;
 }
 
 .logo {
@@ -186,9 +182,19 @@ nav a:hover {
   justify-content: center;
   align-items: center;
 }
+
+/* Restored Full Glass Container Styles */
 .glass-container {
-  /* ... reused ... */
+  background: var(--glass-bg);
+  padding: 60px 50px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  text-align: center;
 }
+
 .glass-input {
   background: #333;
   border: 0;
@@ -230,9 +236,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* --- APP LAYOUT (FIXED) --- */
-
-/* 1. Main Container: Pushed down by 120px to clear the absolute Header */
+/* --- APP LAYOUT --- */
 .container {
   max-width: 1200px;
   margin: 120px auto 40px;
@@ -241,7 +245,6 @@ nav a:hover {
   z-index: 1;
 }
 
-/* 2. Restored Search Bar Styles */
 .search-container {
   text-align: center;
   margin-bottom: 3rem;
