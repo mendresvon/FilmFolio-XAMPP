@@ -1,7 +1,7 @@
 <?php
 // action_remove_item.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once __DIR__ . '/../includes/dbtools.inc.php';
 
 if (isset($_SESSION['user_id']) && isset($_GET['item_id']) && isset($_GET['list_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -19,10 +19,10 @@ if (isset($_SESSION['user_id']) && isset($_GET['item_id']) && isset($_GET['list_
     mysqli_stmt_execute($stmt);
     
     // Redirect back to the specific list
-    header("Location: view_list.php?id=" . $watchlist_id);
+    header("Location: ../view_list.php?id=" . $watchlist_id);
     exit();
 }
 
-header("Location: my_watchlists.php");
+header("Location: ../my_watchlists.php");
 exit();
 ?>

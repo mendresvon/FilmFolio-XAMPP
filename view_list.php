@@ -1,7 +1,7 @@
 <?php
 // view_list.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once 'includes/dbtools.inc.php';
 
 // 1. Security Check
 if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
@@ -54,7 +54,7 @@ if (!empty($movies) && !empty($movies[0]['poster_path'])) {
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($list_name) ?> - FilmFolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -81,7 +81,7 @@ if (!empty($movies) && !empty($movies[0]['poster_path'])) {
                 <h1 class="library-title"><?= htmlspecialchars($list_name) ?></h1>
             </div>
             
-            <a href="action_delete_list.php?id=<?= $watchlist_id ?>" 
+            <a href="actions/action_delete_list.php?id=<?= $watchlist_id ?>" 
                class="btn-icon-text btn-delete-ghost"
                onclick="return confirm('Are you sure you want to delete this entire list? This cannot be undone.');">
                <i class="fas fa-trash"></i> Delete List
@@ -100,7 +100,7 @@ if (!empty($movies) && !empty($movies[0]['poster_path'])) {
                     <?php 
                         $poster_url = !empty($movie['poster_path']) 
                             ? "https://image.tmdb.org/t/p/w500" . $movie['poster_path'] 
-                            : "images/no_poster.jpg";
+                            : "images/no_poster.png";
                     ?>
                     
                     <div class="movie-card-modern">
@@ -113,7 +113,7 @@ if (!empty($movies) && !empty($movies[0]['poster_path'])) {
                                 <a href="details.php?id=<?= $movie['tmdb_id'] ?>" style="flex:1; background: rgba(255,255,255,0.2); color: white; text-align: center; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; backdrop-filter: blur(4px);">
                                     View
                                 </a>
-                                <a href="action_remove_item.php?item_id=<?= $movie['item_id'] ?>&list_id=<?= $watchlist_id ?>" 
+                                <a href="actions/action_remove_item.php?item_id=<?= $movie['item_id'] ?>&list_id=<?= $watchlist_id ?>" 
                                    class="btn-remove-mini" style="flex:1;"
                                    onclick="return confirm('Remove movie from this list?');">
                                     Remove

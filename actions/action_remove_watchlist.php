@@ -1,11 +1,11 @@
 <?php
 // action_remove_watchlist.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once __DIR__ . '/../includes/dbtools.inc.php';
 
 // 1. Check Login
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -21,14 +21,14 @@ if (isset($_GET['id'])) {
 
     if (mysqli_stmt_execute($stmt)) {
         // Success: Redirect back to watchlist
-        header("Location: my_watchlist.php?removed=1");
+        header("Location: ../my_watchlists.php?removed=1");
         exit();
     } else {
         echo "Error deleting record: " . mysqli_error($link);
     }
 } else {
     // No ID provided
-    header("Location: my_watchlist.php");
+    header("Location: ../my_watchlists.php");
     exit();
 }
 ?>

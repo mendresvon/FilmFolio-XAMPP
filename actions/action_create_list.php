@@ -1,10 +1,10 @@
 <?php
 // action_create_list.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once __DIR__ . '/../includes/dbtools.inc.php';
 
 if (!isset($_SESSION['user_id']) || !isset($_POST['list_name'])) {
-    header("Location: my_watchlists.php");
+    header("Location: ../my_watchlists.php");
     exit();
 }
 
@@ -20,6 +20,6 @@ if (!empty($list_name)) {
     mysqli_stmt_execute($stmt);
 }
 
-header("Location: my_watchlists.php");
+header("Location: ../my_watchlists.php");
 exit();
 ?>
