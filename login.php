@@ -1,7 +1,7 @@
 <?php
 // login.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once 'includes/dbtools.inc.php';
 
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login - FilmFolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 

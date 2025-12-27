@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-require_once 'functions.php';
+require_once 'includes/functions.php';
 
 // 1. Determine what to show (Search Results or Popular)
 $search_query = "";
@@ -34,7 +34,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FilmFolio - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 

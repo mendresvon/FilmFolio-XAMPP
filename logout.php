@@ -1,8 +1,7 @@
 <?php
 // logout.php
 session_start();
-$_SESSION = array(); // Clear variables
-session_destroy();   // Destroy session
+session_destroy();
 header("Location: landing.php");
 exit();
 ?>

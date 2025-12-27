@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once 'functions.php';
+require_once 'includes/functions.php';
 
 // 1. Check if ID is provided
 if (!isset($_GET['id'])) {
@@ -29,8 +29,8 @@ if (!empty($movie['poster_path'])) {
     // High-res for background
     $bg_poster_url = "https://image.tmdb.org/t/p/original" . $movie['poster_path']; 
 } else {
-    $poster_url = "images/no_poster.jpg";
-    $bg_poster_url = "images/no_poster.jpg";
+    $poster_url = "images/no_poster.png";
+    $bg_poster_url = "images/no_poster.png";
 }
 
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($movie['title']) ?> - FilmFolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -125,7 +125,7 @@ if (isset($_SESSION['user_id'])) {
                         <a href="my_watchlists.php" class="btn-save-modern" style="background-color: #444;">Create a List to Save Movies</a>
                     </div>
                 <?php else: ?>
-                    <form action="action_add_watchlist.php" method="POST" class="watchlist-form-modern" style="margin-top: 20px;">
+                    <form action="actions/action_add_watchlist.php" method="POST" class="watchlist-form-modern" style="margin-top: 20px;">
                         <input type="hidden" name="tmdb_id" value="<?= $tmdb_id ?>">
                         
                         <span class="watchlist-label-modern">Add to:</span>
@@ -150,7 +150,7 @@ if (isset($_SESSION['user_id'])) {
     <?php if(isset($_SESSION['user_id'])): ?>
         <div class="review-form-card">
             <h4>Write a Review</h4>
-            <form action="action_add_review.php" method="POST">
+            <form action="actions/action_add_review.php" method="POST">
                 <input type="hidden" name="tmdb_id" value="<?= $tmdb_id ?>">
                 
                 <div style="margin-bottom: 15px;">

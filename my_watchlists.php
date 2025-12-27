@@ -1,7 +1,7 @@
 <?php
 // my_watchlists.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once 'includes/dbtools.inc.php';
 
 // Security Check
 if (!isset($_SESSION['user_id'])) {
@@ -36,7 +36,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - FilmFolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         /* Inline style for the Modal (Create List Popup) */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
@@ -92,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 style="margin-top: 0;">Create New List</h2>
-            <form action="action_create_list.php" method="POST">
+            <form action="actions/action_create_list.php" method="POST">
                 <input type="text" name="list_name" class="modal-input" placeholder="e.g. 'Date Night'" required>
                 <button type="submit" class="btn-create-new" style="width:100%; border:none; cursor:pointer;">Create</button>
             </form>

@@ -1,7 +1,7 @@
 <?php
 // register.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once 'includes/dbtools.inc.php';
 
 $error = "";
 $success = "";
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Register - FilmFolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 

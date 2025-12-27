@@ -1,7 +1,7 @@
 <?php
 // action_delete_list.php
 session_start();
-require_once 'dbtools.inc.php';
+require_once __DIR__ . '/../includes/dbtools.inc.php';
 
 if (isset($_SESSION['user_id']) && isset($_GET['id'])) {
     $user_id = $_SESSION['user_id'];
@@ -14,6 +14,6 @@ if (isset($_SESSION['user_id']) && isset($_GET['id'])) {
     mysqli_stmt_execute($stmt);
 }
 
-header("Location: my_watchlists.php");
+header("Location: ../my_watchlists.php");
 exit();
 ?>

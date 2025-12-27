@@ -1,7 +1,7 @@
 <?php
 // action_add_review.php
 session_start();
-require_once 'functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 // 1. Check Login
 if (!isset($_SESSION['user_id'])) {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if (mysqli_stmt_execute($stmt)) {
             // Success: Go back to movie page
-            header("Location: details.php?id=" . $tmdb_id . "&review_saved=1");
+            header("Location: ../details.php?id=" . $tmdb_id . "&review_saved=1");
             exit();
         } else {
             echo "Database Error: " . mysqli_error($link);
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: Could not sync movie with database.";
     }
 } else {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

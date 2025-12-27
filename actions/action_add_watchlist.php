@@ -1,7 +1,7 @@
 <?php
 // action_add_watchlist.php
 session_start();
-require_once 'functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 // 1. Check Login
 if (!isset($_SESSION['user_id'])) {
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id']) && isset($_
         
         if (mysqli_stmt_execute($stmt)) {
             // Success
-            header("Location: details.php?id=" . $tmdb_id . "&added=1");
+            header("Location: ../details.php?id=" . $tmdb_id . "&added=1");
             exit();
         } else {
             echo "Database Error: " . mysqli_error($link);
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id']) && isset($_
     }
 
 } else {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
