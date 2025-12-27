@@ -1,4 +1,4 @@
-/* styles.css - Final Fixed Version */
+/* styles.css */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap");
 
 :root {
@@ -21,7 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- Global Navbar --- */
+/* global navbar */
 header {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0));
   padding: 1.5rem 3rem;
@@ -58,7 +58,7 @@ nav a:hover {
   color: var(--text-gray);
 }
 
-/* --- LANDING PAGE STYLES --- */
+/* landing page styles */
 .hero-container {
   height: 100vh;
   width: 100%;
@@ -173,7 +173,7 @@ nav a:hover {
   color: var(--netflix-red);
 }
 
-/* --- AUTH PAGES --- */
+/* auth pages */
 .auth-body {
   background: url("../images/background.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -183,7 +183,7 @@ nav a:hover {
   align-items: center;
 }
 
-/* Restored Full Glass Container Styles */
+/* restored full glass container styles */
 .glass-container {
   background: var(--glass-bg);
   padding: 60px 50px;
@@ -236,7 +236,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* --- APP LAYOUT --- */
+/* app layout */
 .container {
   max-width: 1200px;
   margin: 120px auto 40px;
@@ -277,7 +277,7 @@ nav a:hover {
   background-color: var(--netflix-red-hover);
 }
 
-/* Movie Grid */
+/* movie grid */
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -313,7 +313,7 @@ nav a:hover {
   text-overflow: ellipsis;
 }
 
-/* Details Page */
+/* details page */
 .hero {
   display: flex;
   gap: 2rem;
@@ -340,9 +340,9 @@ nav a:hover {
   border-radius: 5px;
 }
 
-/* --- MODERN DETAILS PAGE --- */
+/* modern details page */
 
-/* Full-screen blurred background container */
+/* full-screen blurred background container */
 .details-background {
   position: fixed;
   top: 0;
@@ -352,25 +352,25 @@ nav a:hover {
   z-index: -1;
   background-size: cover;
   background-position: center;
-  filter: blur(20px) brightness(0.3); /* Blur and darken */
-  transform: scale(1.1); /* Scale up to hide blurred edges */
+  filter: blur(20px) brightness(0.3); /* blur and darken */
+  transform: scale(1.1); /* scale up to hide blurred edges */
 }
 
-/* Main content container */
+/* main content container */
 .details-container {
   max-width: 1100px;
-  margin: 100px auto 40px; /* Spacing from top */
+  margin: 100px auto 40px; /* spacing from top */
   padding: 30px;
   position: relative;
   z-index: 1;
 }
 
-/* Glassmorphic card for movie details */
+/* glassmorphic card for movie details */
 .details-hero-card {
   display: flex;
   gap: 40px;
-  background: rgba(30, 30, 30, 0.85); /* Semi-transparent dark background */
-  backdrop-filter: blur(15px); /* Glass effect */
+  background: rgba(30, 30, 30, 0.85); /* semi-transparent dark background */
+  backdrop-filter: blur(15px); /* glass effect */
   -webkit-backdrop-filter: blur(15px);
   padding: 40px;
   border-radius: 20px;
@@ -379,14 +379,14 @@ nav a:hover {
   margin-bottom: 40px;
 }
 
-/* Poster styling */
+/* poster styling */
 .details-hero-card img {
   width: 350px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Details content styling */
+/* details content styling */
 .details-content {
   flex: 1;
   color: var(--text-white);
@@ -434,13 +434,13 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
-/* Watchlist form styling */
+/* watchlist form styling */
 .watchlist-form-modern {
   display: inline-flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   padding: 10px 15px;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px; /* pill shape */
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -480,7 +480,7 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* Reviews Section Title */
+/* reviews section title */
 .reviews-title {
   font-size: 2rem;
   font-weight: 700;
@@ -489,7 +489,7 @@ nav a:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Review Form Styling */
+/* review form styling */
 .review-form-card {
   background: #1f1f1f;
   padding: 30px;
@@ -503,7 +503,7 @@ nav a:hover {
   font-size: 1.3rem;
 }
 
-/* Modern Inputs for Review Form */
+/* modern inputs for review form */
 .modern-select,
 .modern-textarea {
   width: 100%;
@@ -523,7 +523,7 @@ nav a:hover {
   border-color: var(--netflix-red);
 }
 
-/* Review Item Card */
+/* review item card */
 .review-card-modern {
   background: #1f1f1f;
   padding: 20px 25px;
@@ -542,7 +542,7 @@ nav a:hover {
 .reviewer-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--netflix-red); /* Red username */
+  color: var(--netflix-red); /* red username */
 }
 
 .review-stars {
@@ -562,28 +562,28 @@ nav a:hover {
   font-size: 0.85rem;
 }
 
-/* --- DASHBOARD (MY WATCHLISTS) STYLES --- */
+/* dashboard (my watchlists) styles */
 
-/* 1. Fixed Background Image */
+/* fixed background image */
 .dashboard-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Ensure you have dashboard_bg.jpg in your images folder */
+  /* ensure you have dashboard_bg.jpg in your images folder */
   background: url("../images/cinema_bg.jpg") no-repeat center center/cover;
   z-index: -2;
 }
 
-/* 2. Dark Overlay (Vignette Effect) */
+/* dark overlay (vignette effect) */
 .dashboard-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Gradient: Dark at top/bottom, slightly lighter in middle */
+  /* gradient: dark at top/bottom, slightly lighter in middle */
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.9) 0%,
@@ -593,19 +593,19 @@ nav a:hover {
   z-index: -1;
 }
 
-/* 3. Centered Layout Container */
+/* centered layout container */
 .dashboard-content {
   position: relative;
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 120px 20px 40px; /* Top padding clears the header */
+  padding: 120px 20px 40px; /* top padding clears the header */
   min-height: 80vh;
   display: flex;
   flex-direction: column;
 }
 
-/* "WELCOME BACK" Title */
+/* welcome back title */
 .dashboard-title {
   font-size: 3.5rem;
   font-weight: 900;
@@ -617,7 +617,7 @@ nav a:hover {
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Header Row for "Your Watchlists" and Button */
+/* header row for your watchlists and button */
 .dashboard-header-row {
   display: flex;
   justify-content: space-between;
@@ -633,7 +633,7 @@ nav a:hover {
   font-weight: 500;
 }
 
-/* Red "Create New" Button */
+/* red create new button */
 .btn-create-new {
   background-color: var(--netflix-red);
   color: white;
@@ -651,7 +651,7 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* List Cards (Glassmorphic) */
+/* list cards (glassmorphic) */
 .lists-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -659,7 +659,7 @@ nav a:hover {
 }
 
 .list-card {
-  background: rgba(30, 30, 30, 0.6); /* Semi-transparent */
+  background: rgba(30, 30, 30, 0.6); /* semi-transparent */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 25px;
@@ -690,9 +690,9 @@ nav a:hover {
   font-size: 0.9rem;
 }
 
-/* --- MODERN LIBRARY VIEW (view_list.php) --- */
+/* modern library view */
 
-/* 1. Dynamic Background */
+/* dynamic background */
 .library-hero-bg {
   position: fixed;
   top: 0;
@@ -702,11 +702,11 @@ nav a:hover {
   z-index: -1;
   background-size: cover;
   background-position: center;
-  filter: blur(30px) brightness(0.2); /* Heavy blur for mood */
+  filter: blur(30px) brightness(0.2); /* heavy blur for mood */
   transform: scale(1.1);
 }
 
-/* 2. Header Section */
+/* header section */
 .library-header {
   display: flex;
   justify-content: space-between;
@@ -722,7 +722,7 @@ nav a:hover {
   margin: 0;
   background: linear-gradient(to right, #fff, #aaa);
 
-  /* Add the standard property below the vendor prefix */
+  /* add the standard property below the vendor prefix */
   -webkit-background-clip: text;
   background-clip: text;
 
@@ -738,7 +738,7 @@ nav a:hover {
   letter-spacing: 1px;
 }
 
-/* 3. Modern Buttons */
+/* modern buttons */
 .btn-icon-text {
   display: inline-flex;
   align-items: center;
@@ -777,14 +777,14 @@ nav a:hover {
   color: white;
 }
 
-/* 4. Movie Card Overlay Actions */
+/* movie card overlay actions */
 .movie-card-modern {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: #111;
-  aspect-ratio: 2/3; /* Standard Poster Ratio */
+  aspect-ratio: 2/3; /* standard poster ratio */
 }
 
 .movie-card-modern:hover {
@@ -800,7 +800,7 @@ nav a:hover {
   display: block;
 }
 
-/* The Overlay that appears on Hover */
+/* the overlay that appears on hover */
 .card-overlay {
   position: absolute;
   top: 0;

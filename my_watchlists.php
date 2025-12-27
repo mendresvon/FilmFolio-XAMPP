@@ -3,16 +3,16 @@
 session_start();
 require_once 'includes/dbtools.inc.php';
 
-// Security Check
+// security check
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
-$username = $_SESSION['username']; // Get username for "Welcome Back" if desired
+$username = $_SESSION['username']; // get username for welcome back if desired
 
-// Fetch User's Lists
+// fetch user's lists
 $sql = "SELECT w.*, COUNT(wi.item_id) as movie_count 
         FROM watchlists w 
         LEFT JOIN watchlist_items wi ON w.watchlist_id = wi.watchlist_id 
@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <title>Dashboard - FilmFolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Inline style for the Modal (Create List Popup) */
+        /* inline style for the modal (create list popup) */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
         .modal-content { background: #222; padding: 30px; border-radius: 8px; width: 100%; max-width: 400px; text-align: center; border: 1px solid #444; }
         .modal-input { width: 100%; padding: 12px; margin: 15px 0; background: #111; border: 1px solid #444; color: white; border-radius: 4px; box-sizing: border-box; }
@@ -100,14 +100,14 @@ while ($row = mysqli_fetch_assoc($result)) {
     </div>
 
     <script>
-        // Simple script to toggle the Create List modal
+        // simple script to toggle the create list modal
         function openModal() {
             document.getElementById('createModal').style.display = 'flex';
         }
         function closeModal() {
             document.getElementById('createModal').style.display = 'none';
         }
-        // Close if clicked outside
+        // close if clicked outside
         window.onclick = function(event) {
             var modal = document.getElementById('createModal');
             if (event.target == modal) {

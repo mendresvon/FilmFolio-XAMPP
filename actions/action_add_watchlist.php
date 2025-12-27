@@ -3,20 +3,20 @@
 session_start();
 require_once __DIR__ . '/../includes/functions.php';
 
-// 1. Check Login
+// check login
 if (!isset($_SESSION['user_id'])) {
     die("Error: You must be logged in.");
 }
 
-// 2. Check Form Data
+// check form data
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id']) && isset($_POST['watchlist_id'])) {
     
     $user_id = $_SESSION['user_id'];
     $tmdb_id = intval($_POST['tmdb_id']);
     $watchlist_id = intval($_POST['watchlist_id']);
 
-    // 3. SECURITY: Verify that this watchlist actually belongs to the user
-    // (Prevents users from hacking the form to add movies to someone else's list)
+    // security: verify that this watchlist actually belongs to the user
+    // prevents users from hacking the form to add movies to someone else's list
     $check_sql = "SELECT watchlist_id FROM watchlists WHERE watchlist_id = ? AND user_id = ?";
     $check_stmt = mysqli_prepare($link, $check_sql);
     mysqli_stmt_bind_param($check_stmt, "ii", $watchlist_id, $user_id);
@@ -27,16 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tmdb_id']) && isset($_
         die("Error: Access Denied. You do not own this list.");
     }
 
-    // 4. LAZY LOAD: Ensure movie is in local DB
+    // lazy load: ensure movie is in local db
     if (ensureMovieInLocalDB($tmdb_id)) {
         
-        // 5. Add to Watchlist Items
+        // add to watchlist items
         $sql = "INSERT IGNORE INTO watchlist_items (watchlist_id, movie_tmdb_id) VALUES (?, ?)";
         $stmt = mysqli_prepare($link, $sql);
         mysqli_stmt_bind_param($stmt, "ii", $watchlist_id, $tmdb_id);
         
         if (mysqli_stmt_execute($stmt)) {
-            // Success
+            // success
             header("Location: ../details.php?id=" . $tmdb_id . "&added=1");
             exit();
         } else {

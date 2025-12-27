@@ -3,7 +3,7 @@
 session_start();
 require_once 'includes/dbtools.inc.php';
 
-// 1. Security Check
+// security check
 if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
     header("Location: my_watchlists.php");
     exit();
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
 $user_id = $_SESSION['user_id'];
 $watchlist_id = intval($_GET['id']);
 
-// 2. Verify List Ownership & Get Name
+// verify list ownership and get name
 $sql_check = "SELECT name FROM watchlists WHERE watchlist_id = ? AND user_id = ?";
 $stmt_check = mysqli_prepare($link, $sql_check);
 mysqli_stmt_bind_param($stmt_check, "ii", $watchlist_id, $user_id);
@@ -25,7 +25,7 @@ if ($row_check = mysqli_fetch_assoc($result_check)) {
     die("Error: List not found or access denied.");
 }
 
-// 3. Fetch Movies
+// fetch movies
 $sql_movies = "SELECT m.*, wi.item_id 
                FROM watchlist_items wi
                JOIN movies m ON wi.movie_tmdb_id = m.tmdb_id 
@@ -42,8 +42,8 @@ while ($row = mysqli_fetch_assoc($result_movies)) {
     $movies[] = $row;
 }
 
-// 4. Determine Background Image (Use first movie poster if available)
-$bg_image = "images/dashboard_bg.jpg"; // Default fallback
+// determine background image (use first movie poster if available)
+$bg_image = "images/dashboard_bg.jpg"; // default fallback
 if (!empty($movies) && !empty($movies[0]['poster_path'])) {
     $bg_image = "https://image.tmdb.org/t/p/original" . $movies[0]['poster_path'];
 }

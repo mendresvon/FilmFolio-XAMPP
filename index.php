@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 // index.php
 session_start();
 
-// If the user is NOT logged in, redirect them to the login page immediately.
+// if user isn't logged in, redirect to login page
 if (!isset($_SESSION['user_id'])) {
     header("Location: landing.php");
     exit();
@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once 'includes/functions.php';
 
-// 1. Determine what to show (Search Results or Popular)
+// determine what to show (search results or popular)
 $search_query = "";
 $movies = [];
 
@@ -66,13 +66,13 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             <div class="movie-grid">
                 <?php foreach ($movies as $movie): ?>
                     <?php 
-                        // TMDB returns a partial path (e.g., "/abc.jpg"). We need the full URL.
-                        // Use a placeholder if no image exists.
+                        // tmdb gives a partial path, so we build the full url
+                        // use placeholder if no image exists
                         $poster_path = $movie['poster_path'];
                         if (!empty($poster_path)) {
                             $poster_url = "https://image.tmdb.org/t/p/w500" . $poster_path;
                         } else {
-                            // Fallback to local image
+                            // fallback to local image
                             $poster_url = "images/no_poster.png"; 
                         }
                     ?>

@@ -1,7 +1,7 @@
 <?php
 // landing.php
 session_start();
-// If logged in, go to app
+// if logged in, go to app
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();

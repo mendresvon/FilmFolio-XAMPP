@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 session_start();
 require_once 'includes/functions.php';
 
-// 1. Check if ID is provided
+// check if id is provided
 if (!isset($_GET['id'])) {
     header("Location: index.php");
     exit();
@@ -15,18 +15,18 @@ if (!isset($_GET['id'])) {
 
 $tmdb_id = $_GET['id'];
 
-// 2. Fetch Movie Details from API
+// fetch movie details from api
 $movie = getMovieDetails($tmdb_id);
 
-// Handle API errors
+// handle api errors
 if (!$movie || isset($movie['success']) && $movie['success'] === false) {
     die("Movie not found.");
 }
 
-// Prepare Poster URL
+// prepare poster url
 if (!empty($movie['poster_path'])) {
     $poster_url = "https://image.tmdb.org/t/p/w500" . $movie['poster_path'];
-    // High-res for background
+    // high-res for background
     $bg_poster_url = "https://image.tmdb.org/t/p/original" . $movie['poster_path']; 
 } else {
     $poster_url = "images/no_poster.png";
@@ -34,7 +34,7 @@ if (!empty($movie['poster_path'])) {
 }
 
 
-// 3. Fetch Local Reviews
+// fetch local reviews
 $reviews = [];
 $sql = "SELECT r.*, u.username 
         FROM reviews r 
@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $reviews[] = $row;
 }
 
-// 4. FETCH USER'S LISTS (For the Dropdown)
+// fetch user's lists for the dropdown
 $user_lists = [];
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
