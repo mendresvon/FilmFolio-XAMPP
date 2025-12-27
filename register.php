@@ -7,6 +7,7 @@ $error = "";
 $success = "";
 $prefill_user = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
 
+// handle registration form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
@@ -14,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($password)) {
         $error = "All fields are required.";
     } else {
+        // check if username is already taken
         $sql = "SELECT user_id FROM users WHERE username = ?";
         $stmt = mysqli_prepare($link, $sql);
         mysqli_stmt_bind_param($stmt, "s", $username);
@@ -23,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_stmt_num_rows($stmt) > 0) {
             $error = "Username already taken.";
         } else {
+            // hash the password and create account
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $insert_sql = "INSERT INTO users (username, password) VALUES (?, ?)";
             $insert_stmt = mysqli_prepare($link, $insert_sql);

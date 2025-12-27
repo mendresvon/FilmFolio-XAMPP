@@ -3,6 +3,7 @@
 session_start();
 require_once 'includes/dbtools.inc.php';
 
+// if already logged in, redirect to home
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
@@ -10,6 +11,7 @@ if (isset($_SESSION['user_id'])) {
 
 $error = "";
 
+// handle login form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
@@ -17,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($password)) {
         $error = "Please enter username and password.";
     } else {
+        // check if user exists
         $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
         $stmt = mysqli_prepare($link, $sql);
         mysqli_stmt_bind_param($stmt, "s", $username);
@@ -24,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = mysqli_stmt_get_result($stmt);
 
         if ($row = mysqli_fetch_assoc($result)) {
+            // verify password
             if (password_verify($password, $row['password'])) {
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['username'] = $row['username'];
